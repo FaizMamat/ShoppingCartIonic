@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ShoppingService } from '../shopping.service';
 
 @Component({
   selector: 'app-tabs',
@@ -6,7 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
+  products = []
 
-  constructor() {}
+  constructor(private ShoppingService: ShoppingService) {}
+
+  ngOnInit(){
+    this.ShoppingService.products.subscribe(products => {
+      this.products = products.filter(p => {
+        return p.inMyCart
+      })
+    })
+  }
+
+  onDelete(id){
+    this.ShoppingService.removeFromCart(parseInt(id))
+  }
 
 }
