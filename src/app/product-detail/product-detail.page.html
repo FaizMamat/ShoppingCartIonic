@@ -1,22 +1,24 @@
-<ion-content>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{selectedProduct.label}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/product"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="back()">
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content size="3">
+  <ion-img [src]="selectedProduct.img"></ion-img>
   <ion-grid>
     <ion-row>
-      <ion-col size="3"></ion-col>
-      <ion-col size="6">
-        <ion-img src="{{selectedProduct.img}}"></ion-img>
-      </ion-col>
-      <ion-col size="3"></ion-col>
+      <ion-col >{{selectedProduct.description}}</ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <h2 style="text-align: center">{{selectedProduct.label}}</h2>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-        <ion-col>
-          <p>{{selectedProduct.description}}</p>
-        </ion-col>
+        <ion-col >Quantity Available :{{selectedProduct.maxquantity}}</ion-col>
       </ion-row>
   </ion-grid>
-
 </ion-content>

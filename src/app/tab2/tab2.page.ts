@@ -9,16 +9,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
   products = []
-  selectedProduct = null
   constructor(private ShoppingService: ShoppingService,private route: ActivatedRoute, private navCtrl: NavController) {}
 
   ngOnInit(){
-    let index = this.route.snapshot.params.index
     this.ShoppingService.products.subscribe(products => {
-      this.products = products.filter(p => {
-        return !p.inMyCart
+      this.products = products.filter(product => {
+        return !product.inMyCart
       })
     })
     
@@ -41,5 +38,7 @@ export class Tab2Page {
     e.stopPropagation()
     this.ShoppingService.addToCart(parseInt(id))
   }
+
+ 
 
 }

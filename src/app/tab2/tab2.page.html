@@ -28,13 +28,13 @@
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-label style="text-align:center">{{product.quantity}}QTY </ion-label>
+              {{product.quantity}}
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col>
-                <ion-icon name="add" (click)="plus($event, product.id)"></ion-icon>
-                <ion-icon name="remove" (click)="minus($event, product.id)"></ion-icon>
+            <ion-col > 
+                <ion-icon style="border: 1px solid" name="add" (click)="plus($event, product.id)" ></ion-icon> 
+                <ion-icon style="border: 1px solid" name="remove" (click)="minus($event, product.id)"></ion-icon>
                 <ion-icon name="cart" (click)="addToCart($event, product.id)"></ion-icon>
             </ion-col>
           </ion-row>

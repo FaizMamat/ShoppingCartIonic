@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingService } from '../shopping.service';
 import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-product-detail',
@@ -9,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailPage implements OnInit {
   selectedProduct = null
-  constructor(private ShoppingService: ShoppingService, private route: ActivatedRoute) { }
+
+  constructor(private ShoppingService: ShoppingService, private route: ActivatedRoute, private navCtrl: NavController ) { }
 
   ngOnInit() {
     const productId = this.route.snapshot.params.productId
@@ -18,6 +20,10 @@ export class ProductDetailPage implements OnInit {
         return p.id === parseInt(productId)
       })[0]
     })
+
+  }
+  back(){
+    this.navCtrl.navigateBack("/product")
   }
 
 }

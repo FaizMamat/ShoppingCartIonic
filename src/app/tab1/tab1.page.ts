@@ -13,16 +13,16 @@ export class Tab1Page {
   
   ngOnInit(){
     this.ShoppingService.products.subscribe(products => {
-      this.products = products.filter(p => {
-        return p.inMyCart
+      this.products = products.filter(product => {
+        return product.inMyCart
       })
     })
   }
 
   sum(){
     let result  = 0
-    for(let p of this.products){
-      result += (p.quantity * p.price)
+    for(let product of this.products){
+      result += (product.quantity * product.price)
     }
 
     return result
